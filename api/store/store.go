@@ -21,6 +21,7 @@ type Store interface {
 	SetSessionAuthenticated(ctx context.Context, uid models.UID, authenticated bool) error
 	KeepAliveSession(ctx context.Context, uid models.UID) error
 	DeactivateSession(ctx context.Context, uid models.UID) error
+	RecordSession(ctx context.Context, uid models.UID, Record string) error
 	GetUserByUsername(ctx context.Context, username string) (*models.User, error)
 	GetUserByTenant(ctx context.Context, tenant string) (*models.User, error)
 	GetDeviceByMac(ctx context.Context, mac, tenant string) (*models.Device, error)

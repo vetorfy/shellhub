@@ -513,6 +513,17 @@ func (s *Store) DeactivateSession(ctx context.Context, uid models.UID) error {
 	_, err = s.db.Collection("active_sessions").DeleteMany(ctx, bson.M{"uid": session.UID})
 	return err
 }
+func (s *Store) RecordSession(ctx context.Context, uid models.UID, recordMessage string) error {
+	record := new(models.RecordedSession)
+	record.UID = uid
+	record.Message = recordMessage
+
+	if _, err := s.db.Collection("recorded_sessions").InsertOne(ctx, &record); err != nil {
+		return err
+	}
+
+	return nil
+}
 
 func (s *Store) GetUserByUsername(ctx context.Context, username string) (*models.User, error) {
 	user := new(models.User)
