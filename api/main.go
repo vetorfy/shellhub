@@ -470,7 +470,6 @@ func main() {
 
 	publicAPI.DELETE("/firewall/rules/:id", func(c echo.Context) error {
 		ctx := c.Get("ctx").(context.Context)
-
 		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
 		svc := firewall.NewService(store)
 
@@ -479,6 +478,54 @@ func main() {
 		}
 
 		return c.NoContent(http.StatusOK)
+		})
+
+	internalAPI.POST("/sessions/:uid/record", func(c echo.Context) error {
+		var req struct {
+			UID string `json:"uid"`
+			Log string `json:"log"`
+		}
+		if err := c.Bind(&req); err != nil {
+			return err
+		}
+
+		ctx := c.Get("ctx").(context.Context)
+		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
+		svc := firewall.NewService(store)
+
+		if err := svc.DeleteRule(ctx, c.Param("id")); err != nil {
+			return err
+		}
+
+		return c.NoContent(http.StatusOK)})
+
+	internalAPI.POST("/sessions/:uid/record", func(c echo.Context) error {
+		var req struct {
+			UID string `json:"uid"`
+			Log string `json:"log"`
+		}
+		if err := c.Bind(&req); err != nil {
+			return err
+		}
+
+		ctx := c.Get("ctx").(context.Context)
+		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
+		svc := sessionmngr.NewService(store)
+
+		return svc.RecordSession(ctx, models.UID(c.Param("uid")), req.Log)
+	})
+
+	publicAPI.GET("/sessions/:uid/play", func(c echo.Context) error {
+		ctx := c.Get("ctx").(context.Context)
+		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
+		svc := sessionmngr.NewService(store)
+
+		record, count, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
+		if err != nil {
+			return err
+		}
+		_ = count
+		return c.JSON(http.StatusOK, record)
 	})
 
 	e.Logger.Fatal(e.Start(":8080"))
