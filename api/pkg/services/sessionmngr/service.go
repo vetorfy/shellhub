@@ -2,6 +2,7 @@ package sessionmngr
 
 import (
 	"context"
+	"strings"
 
 	"github.com/shellhub-io/shellhub/api/pkg/store"
 	"github.com/shellhub-io/shellhub/pkg/models"
@@ -13,6 +14,7 @@ type Service interface {
 	CreateSession(ctx context.Context, session models.Session) (*models.Session, error)
 	DeactivateSession(ctx context.Context, uid models.UID) error
 	SetSessionAuthenticated(ctx context.Context, uid models.UID, authenticated bool) error
+	RecordSession(ctx context.Context, uid models.UID, recordString string) error
 }
 
 type service struct {
@@ -41,4 +43,15 @@ func (s *service) DeactivateSession(ctx context.Context, uid models.UID) error {
 
 func (s *service) SetSessionAuthenticated(ctx context.Context, uid models.UID, authenticated bool) error {
 	return s.store.SetSessionAuthenticated(ctx, uid, authenticated)
+}
+func (s *service) RecordSession(ctx context.Context, uid models.UID, recordString string) error {
+	result := strings.Split(strings.Replace(recordString, "\r\n", "\n", -1), "\n")
+	for i := range result {
+		if err := s.store.RecordSession(ctx, uid, result[i]); err != nil {
+			return err
+		}
+
+	}
+	return nil
+
 }

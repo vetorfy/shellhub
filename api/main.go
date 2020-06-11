@@ -396,6 +396,22 @@ func main() {
 		return svc.DeactivateSession(ctx, models.UID(c.Param("uid")))
 	})
 
+	internalAPI.POST("/sessions/:uid/record", func(c echo.Context) error {
+		var req struct {
+			UID string `json:"uid"`
+			Log string `json:"log"`
+		}
+		if err := c.Bind(&req); err != nil {
+			return err
+		}
+
+		ctx := c.Get("ctx").(context.Context)
+		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
+		svc := sessionmngr.NewService(store)
+
+		return svc.RecordSession(ctx, models.UID(c.Param("uid")), req.Log)
+	})
+
 	e.Logger.Fatal(e.Start(":8080"))
 }
 
