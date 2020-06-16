@@ -15,6 +15,7 @@ module.exports = {
   extends: [
     // use the recommended rule set for both plain javascript and vue
     'eslint:recommended',
+    'airbnb-base',
     'plugin:vue/recommended'
   ],
   rules: {
