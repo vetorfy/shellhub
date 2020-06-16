@@ -135,7 +135,7 @@ export default {
     TerminalDialog,
     DeviceAdd,
     DeviceIcon,
-    DeviceDelete
+    DeviceDelete,
   },
 
   data() {
@@ -143,7 +143,7 @@ export default {
       hostname: window.location.hostname,
       numberDevices: 0,
       listDevices: [],
-      dialogDelete :false,
+      dialogDelete: false,
       pagination: {},
       copySnack: false,
       editName: '',
@@ -152,28 +152,28 @@ export default {
         {
           text: 'Online',
           value: 'online',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Hostname',
           value: 'hostname',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Operating System',
           value: 'info.pretty_name',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'SSHID',
           value: 'namespace',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Actions',
           value: 'actions',
           align: 'center',
-          sortable: false
+          sortable: false,
         }
       ]
     };
@@ -181,34 +181,34 @@ export default {
 
   watch: {
     pagination: {
-      handler () {
+      handler() {
         this.getDevices();
       },
-      deep: true
+      deep: true,
     },
     search() {
       this.getDevices();
-    }
+    },
   },
 
   methods: {
-    async getDevices(){
+    async getDevices() {
       let filter = null;
       let encodedFilter = null;
 
-      if(this.search) {
-        filter = [{type: 'property', params: {name: 'name', operator: 'like', value: this.search}}];
+      if (this.search) {
+        filter = [{ type: 'property', params: { name: 'name', operator: 'like', value: this.search } }];
         encodedFilter = btoa(JSON.stringify(filter));
-      } 
-      const data = {perPage: this.pagination.itemsPerPage, page: this.pagination.page, filter: encodedFilter};
-      
+      }
+      const data = { perPage: this.pagination.itemsPerPage, page: this.pagination.page, filter: encodedFilter };
+
       await this.$store.dispatch('devices/fetch', data);
       this.listDevices = this.$store.getters['devices/list'];
       this.numberDevices = this.$store.getters['devices/getNumberDevices'];
     },
 
-    detailsDevice(value){
-      this.$router.push('/device/'+value.uid); 
+    detailsDevice(value) {
+      this.$router.push(`/device/${value.uid}`);
     },
 
     address(item) {
@@ -226,13 +226,12 @@ export default {
     save(item) {
       this.$store.dispatch('devices/rename', {
         uid: item.uid,
-        name: this.editName
+        name: this.editName,
       });
 
       item.name = this.editName;
     },
   },
-  
 };
 </script>
 <style scoped>
@@ -245,4 +244,3 @@ export default {
 }
 
 </style>
-

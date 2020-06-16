@@ -90,8 +90,8 @@ export default {
   props: {
     uid: {
       type: String,
-      required: true
-    }, 
+      required: true,
+    },
   },
 
   data() {
@@ -101,8 +101,8 @@ export default {
       showLoginForm: true,
       valid: true,
       rules: {
-        required: (value) => !!value || 'Required'
-      }
+        required: (value) => !!value || 'Required',
+      },
     };
   },
 
@@ -143,7 +143,7 @@ export default {
     open() {
       this.xterm = new Terminal({
         cursorBlink: true,
-        fontFamily: 'monospace'
+        fontFamily: 'monospace',
       });
 
       this.fitAddon = new FitAddon();
@@ -179,20 +179,20 @@ export default {
         user: `${this.username}@${this.$props.uid}`,
         passwd: encodeURIComponent(this.passwd),
         cols: this.xterm.cols,
-        rows: this.xterm.rows
+        rows: this.xterm.rows,
       })
         .map(([k, v]) => {
           return `${k}=${v}`;
         })
         .join('&');
 
-      if(location.protocol === 'http:'){
+      if (window.location.protocol === 'http:') {
         protocolConnectionURL = 'ws';
-      } else{
+      } else {
         protocolConnectionURL = 'wss';
       }
 
-      this.ws = new WebSocket(`${protocolConnectionURL}://${location.host}/ws/ssh?${params}`);
+      this.ws = new WebSocket(`${protocolConnectionURL}://${window.location.host}/ws/ssh?${params}`);
 
       this.ws.onopen = () => {
         this.attachAddon = new AttachAddon(this.ws);

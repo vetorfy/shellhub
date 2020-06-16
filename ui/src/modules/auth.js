@@ -64,6 +64,6 @@ export default {
       localStorage.removeItem('user');
       localStorage.removeItem('tenant');
       localStorage.removeItem('onceWelcome');
-    }
-  }
+    },
+  },
 };

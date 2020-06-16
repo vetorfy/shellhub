@@ -11,7 +11,7 @@ export default {
   name: 'Sessions',
 
   components: {
-    ListSession
-  }
+    ListSession,
+  },
 };
 </script>

@@ -11,7 +11,7 @@ export default {
   name: 'DetailsDevice',
 
   components: {
-    DeviceDetails
-  }
+    DeviceDetails,
+  },
 };
 </script>

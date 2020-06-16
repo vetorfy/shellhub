@@ -13,7 +13,7 @@ export default {
 
     addDevice: (state) => {
       return state.addDevice;
-    }
+    },
   },
 
   mutations: {
@@ -23,7 +23,7 @@ export default {
 
     setAddDevice: (state, data) => {
       state.addDevice = data;
-    }
+    },
   },
 
   actions: {
@@ -33,6 +33,6 @@ export default {
 
     showAddDevice: (context, value) => {
       context.commit('setAddDevice', value);
-    }
-  }
+    },
+  },
 };

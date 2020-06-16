@@ -11,7 +11,7 @@ export default {
   mounted() {
     this.xterm = new Terminal({
       cursorBlink: true,
-      fontFamily: 'monospace'
+      fontFamily: 'monospace',
     });
   },
 

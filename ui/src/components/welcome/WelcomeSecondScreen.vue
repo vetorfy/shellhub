@@ -47,15 +47,15 @@ export default {
   props: {
     command: {
       type: String,
-      required: true
+      required: true,
     },
   },
 
   data() {
     return {
       hostname: window.location.hostname,
-      copySnack: false,      
-      allowsUserContinue: false
+      copySnack: false,
+      allowsUserContinue: false,
     };
   },
 

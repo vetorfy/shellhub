@@ -20,9 +20,8 @@ export default {
 
   actions: {
     get: async (context) => {
-      let res = await getStats();
-
+      const res = await getStats();
       context.commit('setStats', res.data);
-    }
-  }
+    },
+  },
 };

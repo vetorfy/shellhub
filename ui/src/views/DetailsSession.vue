@@ -11,7 +11,7 @@ export default {
   name: 'DetailsSessiom',
 
   components: {
-    SessionDetails
-  }
+    SessionDetails,
+  },
 };
 </script>
