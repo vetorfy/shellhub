@@ -478,7 +478,7 @@ func main() {
 		}
 
 		return c.NoContent(http.StatusOK)
-		})
+	})
 
 	internalAPI.POST("/sessions/:uid/record", func(c echo.Context) error {
 		var req struct {
@@ -497,7 +497,8 @@ func main() {
 			return err
 		}
 
-		return c.NoContent(http.StatusOK)})
+		return c.NoContent(http.StatusOK)
+	})
 
 	internalAPI.POST("/sessions/:uid/record", func(c echo.Context) error {
 		var req struct {
@@ -520,11 +521,10 @@ func main() {
 		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
 		svc := sessionmngr.NewService(store)
 
-		record, count, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
+		record, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
 		if err != nil {
 			return err
 		}
-		_ = count
 		return c.JSON(http.StatusOK, record)
 	})
 
