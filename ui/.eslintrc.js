@@ -5,7 +5,7 @@ module.exports = {
     // (i.e are we running in a browser environment or a node.js env)
     node: true,
     browser: true,
-    jest: true
+    jest: true,
   },
   parserOptions: {
     parser: 'babel-eslint',
@@ -16,7 +16,7 @@ module.exports = {
     // use the recommended rule set for both plain javascript and vue
     'eslint:recommended',
     'airbnb-base',
-    'plugin:vue/recommended'
+    'plugin:vue/recommended',
   ],
   rules: {
     'semi': ['error', 'always'],
@@ -34,6 +34,6 @@ module.exports = {
     'camelcase': ['error'],
     'brace-style': ['error'],
     'arrow-parens': ['error', 'always'],
-    'no-var': ['error']
+    'no-var': ['error'],
   }
 };

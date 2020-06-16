@@ -13,9 +13,13 @@
       </v-card-title>
 
       <v-card-text class="mt-4 mb-0 pb-1">
-        <p>In order to register a device on ShellHub, you need to install ShellHub agent onto it.</p>
         <p>
-          The easiest way to install ShellHub agent is with our automatic one-line installation script,
+          In order to register a device on ShellHub,
+          you need to install ShellHub agent onto it.
+        </p>
+        <p>
+          The easiest way to install ShellHub agent is with our automatic
+          one-line installation script,
           which works with all Linux distributions that have Docker installed and properly set up.
         </p>
 
@@ -69,7 +73,7 @@ export default {
   data() {
     return {
       hostname: window.location.hostname,
-      copySnack: false
+      copySnack: false,
     };
   },
 
@@ -85,19 +89,19 @@ export default {
 
       set(value) {
         this.$store.dispatch('modals/showAddDevice', value);
-      }
-    }
+      },
+    },
   },
-  methods:{
+  methods: {
     command() {
-      return `curl "${location.protocol}//${this.hostname}/install.sh?tenant_id=${this.tenant}" | sh`;
+      return `curl "${window.location.protocol}//${this.hostname}/install.sh?tenant_id=${this.tenant}" | sh`;
     },
 
     copyCommand() {
       this.$clipboard(this.command());
       this.copySnack = true;
-    }
-  }
+    },
+  },
 };
 </script>
 

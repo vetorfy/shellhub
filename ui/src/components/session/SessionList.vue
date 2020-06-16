@@ -160,73 +160,71 @@ export default {
         {
           text: 'Active',
           value: 'active',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Device',
           value: 'device',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Username',
           value: 'username',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Authenticated',
           value: 'authenticated',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'IP Address',
           value: 'ip_address',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Started',
           value: 'started',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Last Seen',
           value: 'last_seen',
-          align: 'center'
+          align: 'center',
         },
         {
           text: 'Actions',
           value: 'actions',
-          align: 'center'
-        }
-      ]
+          align: 'center',
+        },
+      ],
     };
   },
 
   watch: {
     pagination: {
-      async handler () {
-        const data = {'perPage': this.pagination.itemsPerPage, 'page': this.pagination.page};
-
+      async handler() {
+        const data = { perPage: this.pagination.itemsPerPage, page: this.pagination.page };
         await this.$store.dispatch('sessions/fetch', data);
         this.listSessions = this.$store.getters['sessions/list'];
-        this.numberSessions = this.$store.getters['sessions/getNumberSessions']; 
+        this.numberSessions = this.$store.getters['sessions/getNumberSessions'];
       },
-      deep: true
+      deep: true,
     },
   },
 
   methods: {
     detailsSession(session) {
-      this.$router.push('/session/' + session.uid);
+      this.$router.push(`'/session/'${session.uid}`);
     },
     async closeSession(session) {
       if (confirm('Are you sure?', session)) {
         this.$store.dispatch('sessions/close', session);
         this.sessionSnack = true;
-
         await this.$store.dispatch('sessions/fetch');
         this.listSessions = this.$store.getters['sessions/list'];
       }
     },
-  }
+  },
 };
 </script>

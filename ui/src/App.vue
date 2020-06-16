@@ -170,7 +170,7 @@ export default {
 
     isLoggedIn() {
       return this.$store.getters['auth/isLoggedIn'];
-    }
+    },
   },
 
   methods: {
@@ -178,8 +178,8 @@ export default {
       this.$store.dispatch('auth/logout').then(() => {
         this.$router.push('/login');
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
