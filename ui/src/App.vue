@@ -147,19 +147,19 @@ export default {
         {
           icon: 'dashboard',
           title: 'Dashboard',
-          path: '/'
+          path: '/',
         },
         {
           icon: 'devices',
           title: 'Devices',
-          path: '/devices'
+          path: '/devices',
         },
         {
           icon: 'history',
           title: 'Sessions',
-          path: '/sessions'
-        }
-      ]
+          path: '/sessions',
+        },
+      ],
     };
   },
 
