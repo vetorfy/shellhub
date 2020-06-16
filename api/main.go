@@ -412,6 +412,19 @@ func main() {
 		return svc.RecordSession(ctx, models.UID(c.Param("uid")), req.Log)
 	})
 
+	publicAPI.GET("/sessions/:uid/play", func(c echo.Context) error {
+		ctx := c.Get("ctx").(context.Context)
+		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
+		svc := sessionmngr.NewService(store)
+
+		record, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
+		if err != nil {
+			return err
+		}
+		fmt.Println(record)
+		return c.JSON(http.StatusOK, record)
+	})
+
 	e.Logger.Fatal(e.Start(":8080"))
 }
 

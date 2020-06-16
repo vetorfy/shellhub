@@ -516,8 +516,11 @@ func (s *Store) DeactivateSession(ctx context.Context, uid models.UID) error {
 }
 func (s *Store) RecordSession(ctx context.Context, uid models.UID, recordMessage string) error {
 	record := new(models.RecordedSession)
+	session, _ := s.GetSession(ctx, uid)
 	record.UID = uid
 	record.Message = recordMessage
+	record.TenantID = session.TenantID
+	record.Time = time.Now()
 
 	if _, err := s.db.Collection("recorded_sessions").InsertOne(ctx, &record); err != nil {
 		return err
@@ -569,6 +572,42 @@ func (s *Store) GetDeviceByUID(ctx context.Context, uid models.UID, tenant strin
 	}
 
 	return device, nil
+}
+
+func (s *Store) GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, error) {
+	sessionRecord := make([]models.RecordedSession, 0)
+
+	query := []bson.M{
+		{
+			"$match": bson.M{"uid": uid},
+		},
+	}
+
+	//Only match for the respective tenant if requested
+	if tenant := store.TenantFromContext(ctx); tenant != nil {
+		query = append(query, bson.M{
+			"$match": bson.M{
+				"tenant_id": tenant.ID,
+			},
+		})
+	}
+	cursor, err := s.db.Collection("recorded_sessions").Aggregate(ctx, query)
+	if err != nil {
+		return sessionRecord, err
+	}
+
+	defer cursor.Close(ctx)
+
+	for cursor.Next(ctx) {
+		record := new(models.RecordedSession)
+		err = cursor.Decode(&record)
+		if err != nil {
+			return sessionRecord, err
+		}
+
+		sessionRecord = append(sessionRecord, *record)
+	}
+	return sessionRecord, nil
 }
 
 func buildFilterQuery(filters []models.Filter) ([]bson.M, error) {

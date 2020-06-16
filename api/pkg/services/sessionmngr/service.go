@@ -15,6 +15,7 @@ type Service interface {
 	DeactivateSession(ctx context.Context, uid models.UID) error
 	SetSessionAuthenticated(ctx context.Context, uid models.UID, authenticated bool) error
 	RecordSession(ctx context.Context, uid models.UID, recordString string) error
+	GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, error)
 }
 
 type service struct {
@@ -53,5 +54,8 @@ func (s *service) RecordSession(ctx context.Context, uid models.UID, recordStrin
 
 	}
 	return nil
+}
+func (s *service) GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, error) {
+	return s.store.GetRecord(ctx, uid)
 
 }
