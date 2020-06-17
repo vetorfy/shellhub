@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import ListSession from '../components/session/SessionList';
 
 export default {
@@ -14,4 +15,5 @@ export default {
     ListSession,
   },
 };
+
 </script>

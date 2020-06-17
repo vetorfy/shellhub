@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import SessionDetails from '../components/session/SessionDetails';
 
 export default {
@@ -14,4 +15,5 @@ export default {
     SessionDetails,
   },
 };
+
 </script>

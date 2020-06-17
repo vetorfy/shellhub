@@ -148,9 +148,6 @@
 import DeviceAdd from '../components/device/DeviceAdd';
 import Welcome from '../components/welcome/Welcome';
 
-// import DeviceAdd from '@/components/device/DeviceAdd.vue';
-// import Welcome from '@/components/welcome/Welcome.vue';
-
 export default {
   name: 'Dashboard',
 
@@ -196,9 +193,11 @@ export default {
       this.hasDevicesRegistered = params;
       this.show = false;
     },
+
     initialState() {
       return this.stats.registered_devices !== 0;
     },
   },
 };
+
 </script>

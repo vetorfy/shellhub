@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import DeviceList from '../components/device/DeviceList';
 
 export default {
@@ -14,4 +15,5 @@ export default {
     DeviceList,
   },
 };
+
 </script>
