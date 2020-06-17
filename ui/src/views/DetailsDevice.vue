@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import DeviceDetails from '@/components/device/DeviceDetails.vue';
+import DeviceDetails from '../components/device/DeviceDetails';
+// import DeviceDetails from '@/components/device/DeviceDetails.vue';
 
 export default {
   name: 'DetailsDevice',

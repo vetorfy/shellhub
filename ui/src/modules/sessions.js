@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
-import { fetchSessions, getSession, closeSession } from '@/api/sessions';
+import { fetchSessions, getSession, closeSession } from '../api/sessions';
+// import { fetchSessions, getSession, closeSession } from '@/api/sessions';
 
 export default {
   namespaced: true,

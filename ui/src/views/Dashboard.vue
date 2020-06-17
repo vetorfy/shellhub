@@ -24,7 +24,9 @@
               <v-list-item-title class="headline mb-1">
                 {{ stats.registered_devices }}
               </v-list-item-title>
-              <v-list-item-subtitle>Registered devices into the tenancy account</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                Registered devices into the tenancy account
+              </v-list-item-subtitle>
             </v-list-item-content>
 
             <v-list-item-avatar
@@ -72,7 +74,9 @@
               <v-list-item-title class="headline mb-1">
                 {{ stats.online_devices }}
               </v-list-item-title>
-              <v-list-item-subtitle>Devices are online and ready for connecting</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                Devices are online and ready for connecting
+              </v-list-item-subtitle>
             </v-list-item-content>
 
             <v-list-item-avatar
@@ -140,8 +144,12 @@
 </template>
 
 <script>
-import DeviceAdd from '@/components/device/DeviceAdd.vue';
-import Welcome from '@/components/welcome/Welcome.vue';
+
+import DeviceAdd from '../components/device/DeviceAdd';
+import Welcome from '../components/welcome/Welcome';
+
+// import DeviceAdd from '@/components/device/DeviceAdd.vue';
+// import Welcome from '@/components/welcome/Welcome.vue';
 
 export default {
   name: 'Dashboard',
@@ -174,7 +182,7 @@ export default {
     this.hasDevicesRegistered = this.initialState();
     if (localStorage.getItem('onceWelcome') === null) {
       localStorage.setItem('onceWelcome', true);
-      this.show=!this.hasDevicesRegistered;
+      this.show = !this.hasDevicesRegistered;
     }
   },
 

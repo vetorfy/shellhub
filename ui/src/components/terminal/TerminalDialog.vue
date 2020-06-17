@@ -28,7 +28,7 @@
             <v-icon>close</v-icon>
           </v-btn>
           <v-toolbar-title>Terminal</v-toolbar-title>
-    
+
           <v-spacer />
         </v-toolbar>
 
@@ -78,10 +78,14 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-unresolved
 import { Terminal } from 'xterm';
+// eslint-disable-next-line import/no-unresolved
 import { AttachAddon } from 'xterm-addon-attach';
+// eslint-disable-next-line import/no-unresolved
 import { FitAddon } from 'xterm-addon-fit';
 
+// eslint-disable-next-line import/no-unresolved
 import 'xterm/css/xterm.css';
 
 export default {
@@ -118,8 +122,8 @@ export default {
         } else {
           this.$store.dispatch('modals/toggleTerminal', '');
         }
-      }
-    }
+      },
+    },
   },
 
   watch: {
@@ -136,7 +140,7 @@ export default {
           this.$refs.username.focus();
         });
       }
-    }
+    },
   },
 
   methods: {
@@ -181,6 +185,7 @@ export default {
         cols: this.xterm.cols,
         rows: this.xterm.rows,
       })
+        // eslint-disable-next-line arrow-body-style
         .map(([k, v]) => {
           return `${k}=${v}`;
         })
@@ -206,7 +211,7 @@ export default {
 
     showCopySnack() {
       this.copySnack = true;
-    }
-  }
+    },
+  },
 };
 </script>

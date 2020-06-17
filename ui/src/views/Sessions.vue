@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ListSession from '@/components/session/SessionList.vue';
+import ListSession from '../components/session/SessionList';
 
 export default {
   name: 'Sessions',

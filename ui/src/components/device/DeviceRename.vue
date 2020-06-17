@@ -63,6 +63,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-unresolved
 import isValidHostname from 'is-valid-hostname';
 
 export default {
@@ -85,6 +86,7 @@ export default {
 
   watch: {
     dialog(out) {
+      // eslint-disable-next-line no-unused-expressions
       !out && this.cancel();
     },
   },
@@ -114,6 +116,6 @@ export default {
         this.invalid = true;
       }
     },
-  }
+  },
 };
 </script>

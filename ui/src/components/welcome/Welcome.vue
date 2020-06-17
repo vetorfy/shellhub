@@ -130,9 +130,13 @@
 
 <script>
 
-import WelcomeFirstScreen from '@/components/welcome/WelcomeFirstScreen.vue';
-import WelcomeSecondScreen from '@/components/welcome/WelcomeSecondScreen.vue';
-import WelcomeThirdScreen from '@/components/welcome/WelcomeThirdScreen.vue';
+import WelcomeFirstScreen from './WelcomeFirstScreen';
+import WelcomeSecondScreen from './WelcomeSecondScreen';
+import WelcomeThirdScreen from './WelcomeThirdScreen';
+
+// import WelcomeFirstScreen from '@/components/welcome/WelcomeFirstScreen.vue';
+// import WelcomeSecondScreen from '@/components/welcome/WelcomeSecondScreen.vue';
+// import WelcomeThirdScreen from '@/components/welcome/WelcomeThirdScreen.vue';
 
 export default {
   name: 'Welcome',

@@ -160,6 +160,7 @@
 
 <script>
 
+// eslint-disable-next-line import/no-unresolved
 import moment from 'moment';
 
 export default {

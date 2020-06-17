@@ -120,11 +120,18 @@
 
 <script>
 
-import TerminalDialog from '@/components/terminal/TerminalDialog.vue';
+// eslint-disable-next-line import/no-unresolved
 import moment from 'moment';
-import DeviceIcon from '@/components/device/DeviceIcon.vue';
-import DeviceDelete from '@/components/device/DeviceDelete.vue';
-import DeviceRename from  '@/components/device/DeviceRename.vue';
+import TerminalDialog from '../terminal/TerminalDialog';
+import DeviceIcon from './DeviceIcon';
+import DeviceDelete from './DeviceDelete';
+import DeviceRename from './DeviceRename';
+
+// import TerminalDialog from '@/components/terminal/TerminalDialog.vue';
+// import moment from 'moment';
+// import DeviceIcon from '@/components/device/DeviceIcon.vue';
+// import DeviceDelete from '@/components/device/DeviceDelete.vue';
+// import DeviceRename from  '@/components/device/DeviceRename.vue';
 
 export default {
   name: 'DeviceDetails',

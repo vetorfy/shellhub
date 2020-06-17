@@ -100,13 +100,13 @@
               </template>
               <span>Details</span>
             </v-tooltip>
-        
+
             <TerminalDialog
               v-if="item.online"
               :uid="item.uid"
             />
 
-            <DeviceDelete   
+            <DeviceDelete
               :uid="item.uid"
             />
           </template>
@@ -123,7 +123,13 @@
 </template>
 
 <script>
-import TerminalDialog from '@/components/terminal/TerminalDialog.vue';
+
+// import TerminalDialog from '../terminal/TerminalDialog';
+// import DeviceAdd from './DeviceAdd';
+// import DeviceIcon from './DeviceIcon';
+// import DeviceDelete from './DeviceDelete';
+
+import TerminalDialog from '@/components/terminal/TerminalDialog';
 import DeviceAdd from '@/components/device/DeviceAdd.vue';
 import DeviceIcon from '@/components/device/DeviceIcon.vue';
 import DeviceDelete from '@/components/device/DeviceDelete.vue';
@@ -200,7 +206,12 @@ export default {
         filter = [{ type: 'property', params: { name: 'name', operator: 'like', value: this.search } }];
         encodedFilter = btoa(JSON.stringify(filter));
       }
-      const data = { perPage: this.pagination.itemsPerPage, page: this.pagination.page, filter: encodedFilter };
+
+      const data = { 
+        perPage: this.pagination.itemsPerPage,
+        page: this.pagination.page, 
+        filter: encodedFilter 
+      };
 
       await this.$store.dispatch('devices/fetch', data);
       this.listDevices = this.$store.getters['devices/list'];

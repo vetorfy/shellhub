@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 <template>
   <fragment>
     <div class="d-flex pa-0 align-center">
@@ -218,6 +219,7 @@ export default {
       this.$router.push(`'/session/'${session.uid}`);
     },
     async closeSession(session) {
+      // eslint-disable-next-line no-restricted-globals
       if (confirm('Are you sure?', session)) {
         this.$store.dispatch('sessions/close', session);
         this.sessionSnack = true;

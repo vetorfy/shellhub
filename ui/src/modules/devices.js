@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
+// eslint-disable-next-line object-curly-newline
 import { fetchDevices, removeDevice, renameDevice, getDevice } from '../api/devices';
 
 export default {
@@ -28,7 +30,8 @@ export default {
     },
 
     renameDevice: (state, data) => {
-      state.devices = state.devices.map((i) => (i.uid === data.uid ? { ...i, name: data.name } : i));
+      // eslint-disable-next-line max-len
+      state.devices = state.devices.map((i) => (i.uid === data.uid ? { ...i, name: data.name } : i)); // eslint-disable-line no-param-reassign
     },
 
     setDevice: (state, data) => {

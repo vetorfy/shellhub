@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SessionDetails from '@/components/session/SessionDetails.vue';
+import SessionDetails from '../components/session/SessionDetails';
 
 export default {
   name: 'DetailsSessiom',

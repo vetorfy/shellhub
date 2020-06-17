@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import DeviceList from '@/components/device/DeviceList.vue';
+import DeviceList from '../components/device/DeviceList';
 
 export default {
   name: 'Devices',
