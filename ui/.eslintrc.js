@@ -35,5 +35,19 @@ module.exports = {
     'brace-style': ['error'],
     'arrow-parens': ['error', 'always'],
     'no-var': ['error'],
-  }
+    'import/extensions': ['error', 'ignorePackages', {
+      js: 'never',
+      jsx: 'never',
+      vue: 'never',
+    }],
+  },
+  settings:{
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.vue'],
+        moduleDirectory: ['src/'],
+      },
+    },
+  },
 };
