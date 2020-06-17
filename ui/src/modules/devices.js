@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import Vue from 'vue';
+import Vue from '../../node_modules/vue';
 import * as apiDevice from '../api/devices';
 
 export default {

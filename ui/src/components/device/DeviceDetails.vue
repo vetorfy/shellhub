@@ -120,8 +120,7 @@
 
 <script>
 
-// eslint-disable-next-line import/no-unresolved
-import moment from 'moment';
+import moment from '../../../node_modules/moment';
 import TerminalDialog from '../terminal/TerminalDialog';
 import DeviceIcon from './DeviceIcon';
 import DeviceDelete from './DeviceDelete';

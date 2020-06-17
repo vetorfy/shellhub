@@ -160,8 +160,7 @@
 
 <script>
 
-// eslint-disable-next-line import/no-unresolved
-import moment from 'moment';
+import moment from '../../../node_modules/moment';
 
 export default {
   name: 'SessionDetails',

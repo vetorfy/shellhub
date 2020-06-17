@@ -79,15 +79,11 @@
 
 <script>
 
-// eslint-disable-next-line import/no-unresolved
-import { Terminal } from 'xterm';
-// eslint-disable-next-line import/no-unresolved
-import { AttachAddon } from 'xterm-addon-attach';
-// eslint-disable-next-line import/no-unresolved
-import { FitAddon } from 'xterm-addon-fit';
+import { Terminal } from '../../../node_modules/xterm';
+import { AttachAddon } from '../../../node_modules/xterm-addon-attach';
+import { FitAddon } from '../../../node_modules/xterm-addon-fit';
 
-// eslint-disable-next-line import/no-unresolved
-import 'xterm/css/xterm.css';
+import '../../../node_modules/xterm/css/xterm.css';
 
 export default {
   name: 'TerminalDialog',

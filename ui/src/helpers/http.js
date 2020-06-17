@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import Axios from 'axios';
+import Axios from '../../node_modules/axios';
 import store from '../store';
 import router from '../router';
 
@@ -18,8 +17,7 @@ export default () => {
         store.dispatch('auth/logout');
         router.push('/login');
       }
-    // eslint-disable-next-line comma-dangle
-    }
+    },
   );
 
   return axios;

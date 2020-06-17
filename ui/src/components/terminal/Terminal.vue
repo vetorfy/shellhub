@@ -4,8 +4,7 @@
 
 <script>
 
-// eslint-disable-next-line import/no-unresolved
-import { Terminal } from 'xterm';
+import { Terminal } from '../../../node_modules/xterm';
 
 export default {
   name: 'Terminal',

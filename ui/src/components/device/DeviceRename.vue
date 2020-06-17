@@ -64,8 +64,7 @@
 
 <script>
 
-// eslint-disable-next-line import/no-unresolved
-import isValidHostname from 'is-valid-hostname';
+import isValidHostname from '../../../node_modules/is-valid-hostname';
 
 export default {
   name: 'DeviceRename',

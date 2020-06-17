@@ -1,12 +1,7 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-import Vue from 'vue';
-import Router from 'vue-router';
-// eslint-disable-next-line import/extensions
-// eslint-disable-next-line import/no-useless-path-segments
-import Dashboard from './../views/Dashboard.vue';
-// eslint-disable-next-line import/no-useless-path-segments
-import store from './../store';
+import Vue from '../../node_modules/vue';
+import Router from '../../node_modules/vue-router';
+import Dashboard from '../views/Dashboard';
+import store from '../store';
 
 Vue.use(Router);
 
