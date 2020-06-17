@@ -1,7 +1,12 @@
 // eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
-// eslint-disable-next-line object-curly-newline
-import { fetchDevices, removeDevice, renameDevice, getDevice } from '../api/devices';
+
+import {
+  fetchDevices,
+  removeDevice,
+  renameDevice,
+  getDevice,
+} from '../api/devices';
 
 export default {
   namespaced: true,
