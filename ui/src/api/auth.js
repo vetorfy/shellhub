@@ -1,9 +1,5 @@
 import http from '../helpers/http';
 
-// eslint-disable-next-line import/prefer-default-export
-export const
-  // eslint-disable-next-line arrow-body-style
-  login = async (user) => {
-    return http().post('/login', user);
-  // eslint-disable-next-line eol-last
-  };
+const login = async (user) => http().post('/login', user);
+
+export { login as default };

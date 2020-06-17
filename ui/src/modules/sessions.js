@@ -1,11 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
-
-import {
-  fetchSessions,
-  getSession,
-  closeSession,
-} from '../api/sessions';
+import * as apiSession from '../api/sessions';
 
 export default {
   namespaced: true,
@@ -36,15 +31,15 @@ export default {
 
   actions: {
     fetch: async (context, data) => {
-      const res = await fetchSessions(data.perPage, data.page);
+      const res = await apiSession.fetchSessions(data.perPage, data.page);
       context.commit('setSessions', res);
     },
     get: async (context, uid) => {
-      const res = await getSession(uid);
+      const res = await apiSession.getSession(uid);
       context.commit('setSession', res.data);
     },
     close: async (context, session) => {
-      await closeSession(session);
+      await apiSession.closeSession(session);
     },
   },
 };

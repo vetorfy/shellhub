@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
-import { login } from '../api/auth';
+import login from '../api/auth';
 
 export default {
   namespaced: true,
