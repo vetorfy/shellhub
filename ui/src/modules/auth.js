@@ -1,6 +1,6 @@
-/* eslint-disable no-use-before-define */
+// eslint-disable-next-line import/no-unresolved
+import Vue from 'vue';
 import { login } from '../api/auth';
-// import { login } from '/api/auth';
 
 export default {
   namespaced: true,
@@ -21,25 +21,25 @@ export default {
 
   mutations: {
     authRequest(state) {
-      state.status = 'loading'; // eslint-disable-line no-param-reassign
+      Vue.set(state, 'status', 'loading');
     },
 
     authSuccess(state, data) {
-      state.status = 'success'; // eslint-disable-line no-param-reassign
-      state.token = data.token; // eslint-disable-line no-param-reassign
-      state.user = data.user; // eslint-disable-line no-param-reassign
-      state.tenant = data.tenant; // eslint-disable-line no-param-reassign
+      Vue.set(state, 'status', 'success');
+      Vue.set(state, 'token', data.token);
+      Vue.set(state, 'user', data.user);
+      Vue.set(state, 'tenant', data.tenant);
     },
 
     authError(state) {
-      state.status = 'error'; // eslint-disable-line no-param-reassign
+      Vue.set(state, 'status', 'error');
     },
 
     logout(state) {
-      state.status = ''; // eslint-disable-line no-param-reassign
-      state.token = ''; // eslint-disable-line no-param-reassign
-      state.user = ''; // eslint-disable-line no-param-reassign
-      state.tenant = ''; // eslint-disable-line no-param-reassign
+      Vue.set(state, 'status', '');
+      Vue.set(state, 'token', '');
+      Vue.set(state, 'user', '');
+      Vue.set(state, 'tenant', '');
     },
   },
 

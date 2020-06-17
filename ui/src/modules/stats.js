@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
 import { getStats } from '../api/stats';
-// import { getStats } from '@/api/stats';
 
 export default {
   namespaced: true,

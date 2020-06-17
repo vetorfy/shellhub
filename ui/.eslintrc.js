@@ -40,6 +40,7 @@ module.exports = {
       jsx: 'never',
       vue: 'never',
     }],
+    // "no-param-reassign": 0
   },
   settings:{
     'import/resolver': {

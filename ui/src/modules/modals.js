@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
+import Vue from 'vue';
+
 export default {
   namespaced: true,
 
@@ -7,24 +10,17 @@ export default {
   },
 
   getters: {
-    // eslint-disable-next-line arrow-body-style
-    terminal: (state) => {
-      return state.terminal;
-    },
-
-    // eslint-disable-next-line arrow-body-style
-    addDevice: (state) => {
-      return state.addDevice;
-    },
+    terminal: (state) => state.terminal,
+    addDevice: (state) => state.addDevice,
   },
 
   mutations: {
     setTerminal: (state, data) => {
-      state.terminal = data; // eslint-disable-line no-param-reassign
+      Vue.set(state, 'terminal', data);
     },
 
     setAddDevice: (state, data) => {
-      state.addDevice = data; // eslint-disable-line no-param-reassign
+      Vue.set(state, 'addDevice', data);
     },
   },
 
