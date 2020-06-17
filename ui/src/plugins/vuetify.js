@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import '@mdi/font/css/materialdesignicons.css';
@@ -8,8 +9,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import Clipboard from 'v-clipboard';
 import Fragment from 'vue-fragment';
 
-//import 'vuetify/dist/vuetify.min.css'
-//import '../styles/variables.scss'
+// import 'vuetify/dist/vuetify.min.css'
+// import '../styles/variables.scss'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon); // Register component globally
 library.add(fas); // Include needed icons.
@@ -29,6 +30,6 @@ export default new Vuetify({
         accent: '#8c9eff',
         error: '#b71c1c',
       },
-    }
-  }
+    },
+  },
 });

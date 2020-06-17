@@ -1,24 +1,28 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable arrow-body-style */
+/* eslint-disable eol-last */
+/* eslint-disable one-var */
 import http from '../helpers/http';
 
-const fetchDevices = async (perPage, page, search) => {
-  let query = '';
-  if (search === null) {
-    query = `/devices?per_page=${perPage}&page=${page}`;
-  } else {
-    query = `/devices?per_page=${perPage}&page=${page}&filter=${search}`;
-  }
-  return http().get(query);
-};
+export const
+  fetchDevices = async (perPage, page, search) => {
+    let query = '';
+    if (search === null) { 
+      query = `/devices?per_page=${perPage}&page=${page}`;
+    } else {
+      query = `/devices?per_page=${perPage}&page=${page}&filter=${search}`;
+    }
+    return http().get(query);
+  },
 
-const removeDevice = async (uid) => http().delete(`/devices/${uid}`);
+  removeDevice = async (uid) => {
+    return http().delete(`/devices/${uid}`);
+  },
 
-const renameDevice = async (data) => http().patch(`/devices/${data.uid}`, { name: data.name });
+  renameDevice = async (data) => {
+    return http().patch(`/devices/${data.uid}`, { name: data.name });
+  },
 
-const getDevice = async (uid) => http().get(`/devices/${uid}`);
-
-export default {
-  fetchDevices,
-  removeDevice,
-  renameDevice,
-  getDevice,
-};
+  getDevice = async (uid) => {
+    return http().get(`/devices/${uid}`);
+  };
