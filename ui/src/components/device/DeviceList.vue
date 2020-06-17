@@ -124,15 +124,15 @@
 
 <script>
 
-// import TerminalDialog from '../terminal/TerminalDialog';
-// import DeviceAdd from './DeviceAdd';
-// import DeviceIcon from './DeviceIcon';
-// import DeviceDelete from './DeviceDelete';
+import TerminalDialog from '../terminal/TerminalDialog';
+import DeviceAdd from './DeviceAdd';
+import DeviceIcon from './DeviceIcon';
+import DeviceDelete from './DeviceDelete';
 
-import TerminalDialog from '@/components/terminal/TerminalDialog';
-import DeviceAdd from '@/components/device/DeviceAdd.vue';
-import DeviceIcon from '@/components/device/DeviceIcon.vue';
-import DeviceDelete from '@/components/device/DeviceDelete.vue';
+// import TerminalDialog from '@/components/terminal/TerminalDialog';
+// import DeviceAdd from '@/components/device/DeviceAdd.vue';
+// import DeviceIcon from '@/components/device/DeviceIcon.vue';
+// import DeviceDelete from '@/components/device/DeviceDelete.vue';
 
 export default {
   name: 'DeviceList',
@@ -180,8 +180,8 @@ export default {
           value: 'actions',
           align: 'center',
           sortable: false,
-        }
-      ]
+        },
+      ],
     };
   },
 
@@ -207,10 +207,10 @@ export default {
         encodedFilter = btoa(JSON.stringify(filter));
       }
 
-      const data = { 
+      const data = {
         perPage: this.pagination.itemsPerPage,
-        page: this.pagination.page, 
-        filter: encodedFilter 
+        page: this.pagination.page,
+        filter: encodedFilter,
       };
 
       await this.$store.dispatch('devices/fetch', data);
@@ -239,8 +239,7 @@ export default {
         uid: item.uid,
         name: this.editName,
       });
-
-      item.name = this.editName;
+      // item.name = this.editName;
     },
   },
 };

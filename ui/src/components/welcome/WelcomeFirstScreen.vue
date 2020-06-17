@@ -21,6 +21,6 @@ export default {
       const user = this.$store.getters['auth/currentUser'].toLowerCase();
       return user.charAt(0).toUpperCase() + user.slice(1);
     },
-  }
+  },
 };
 </script>
