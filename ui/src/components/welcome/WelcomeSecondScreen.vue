@@ -40,6 +40,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'WelcomeSecondScreen',
 
@@ -67,9 +68,11 @@ export default {
   },
 
 };
+
 </script>
 
 <style lang="scss" scoped>
+
 @import '~vuetify/src/styles/settings/_variables.scss';
 
 .code {
@@ -77,4 +80,5 @@ export default {
   font-size: $code-kbd-font-size;
   font-weight: $code-kbd-font-weight;
 }
+
 </style>

@@ -16,6 +16,7 @@
 
 export default {
   name: 'WelcomeFirstScreen',
+
   methods: {
     capitalizeFirstLetter() {
       const user = this.$store.getters['auth/currentUser'].toLowerCase();
@@ -23,4 +24,5 @@ export default {
     },
   },
 };
+
 </script>

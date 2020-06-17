@@ -63,6 +63,7 @@
 </template>
 
 <script>
+
 // eslint-disable-next-line import/no-unresolved
 import isValidHostname from 'is-valid-hostname';
 
@@ -118,4 +119,5 @@ export default {
     },
   },
 };
+
 </script>

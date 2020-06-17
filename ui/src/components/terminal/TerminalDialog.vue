@@ -78,6 +78,7 @@
 </template>
 
 <script>
+
 // eslint-disable-next-line import/no-unresolved
 import { Terminal } from 'xterm';
 // eslint-disable-next-line import/no-unresolved
@@ -214,4 +215,5 @@ export default {
     },
   },
 };
+
 </script>

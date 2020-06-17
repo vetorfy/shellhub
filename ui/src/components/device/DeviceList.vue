@@ -129,11 +129,6 @@ import DeviceAdd from './DeviceAdd';
 import DeviceIcon from './DeviceIcon';
 import DeviceDelete from './DeviceDelete';
 
-// import TerminalDialog from '@/components/terminal/TerminalDialog';
-// import DeviceAdd from '@/components/device/DeviceAdd.vue';
-// import DeviceIcon from '@/components/device/DeviceIcon.vue';
-// import DeviceDelete from '@/components/device/DeviceDelete.vue';
-
 export default {
   name: 'DeviceList',
 
@@ -192,6 +187,7 @@ export default {
       },
       deep: true,
     },
+
     search() {
       this.getDevices();
     },
@@ -243,8 +239,11 @@ export default {
     },
   },
 };
+
 </script>
+
 <style scoped>
+
 .list-itens {
   font-family: monospace;
 }

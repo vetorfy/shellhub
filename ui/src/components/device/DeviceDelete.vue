@@ -49,6 +49,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'DeviceDelete',
 
@@ -57,6 +58,7 @@ export default {
       type: String,
       required: true,
     },
+
     redirect: {
       type: Boolean,
     },
@@ -77,4 +79,5 @@ export default {
     },
   },
 };
+
 </script>

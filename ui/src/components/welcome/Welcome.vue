@@ -134,10 +134,6 @@ import WelcomeFirstScreen from './WelcomeFirstScreen';
 import WelcomeSecondScreen from './WelcomeSecondScreen';
 import WelcomeThirdScreen from './WelcomeThirdScreen';
 
-// import WelcomeFirstScreen from '@/components/welcome/WelcomeFirstScreen.vue';
-// import WelcomeSecondScreen from '@/components/welcome/WelcomeSecondScreen.vue';
-// import WelcomeThirdScreen from '@/components/welcome/WelcomeThirdScreen.vue';
-
 export default {
   name: 'Welcome',
 
@@ -152,6 +148,7 @@ export default {
       type: Boolean,
       required: true,
     },
+
     curl: {
       type: Object,
       required: true,
@@ -173,6 +170,7 @@ export default {
       get() {
         return this.dialog;
       },
+
       set(value) {
         this.$emit('show', value);
       },
@@ -187,18 +185,22 @@ export default {
     receiveClip(params) {
       this.copy = params;
     },
+
     beforeDestroy() {
       clearInterval(this.polling);
     },
+
     command() {
       return `curl "${window.location.protocol}//${this.curl.hostname}/install.sh?tenant_id=${this.curl.tenant}" | sh`;
     },
+
     finished() {
       clearTimeout(this.trigger);
       this.show = false;
       this.$emit('finishedEvent', false);
       this.beforeDestroy();
     },
+
     pollingDevices() {
       this.polling = setInterval(async () => {
         await this.$store.dispatch('stats/get', {});
@@ -208,9 +210,11 @@ export default {
         }
       }, 3000);
     },
+
     checkDevice() {
       return this.$store.getters['stats/stats'].registered_devices !== 0;
     },
+
     autoNext() {
       this.trigger = setTimeout(() => {
         document.getElementById('autoclick').click();
@@ -219,4 +223,5 @@ export default {
     },
   },
 };
+
 </script>

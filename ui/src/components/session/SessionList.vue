@@ -147,6 +147,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'SessionList',
 
@@ -229,4 +230,5 @@ export default {
     },
   },
 };
+
 </script>

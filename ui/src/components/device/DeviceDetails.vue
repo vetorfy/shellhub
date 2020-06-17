@@ -127,12 +127,6 @@ import DeviceIcon from './DeviceIcon';
 import DeviceDelete from './DeviceDelete';
 import DeviceRename from './DeviceRename';
 
-// import TerminalDialog from '@/components/terminal/TerminalDialog.vue';
-// import moment from 'moment';
-// import DeviceIcon from '@/components/device/DeviceIcon.vue';
-// import DeviceDelete from '@/components/device/DeviceDelete.vue';
-// import DeviceRename from  '@/components/device/DeviceRename.vue';
-
 export default {
   name: 'DeviceDetails',
 
@@ -181,9 +175,11 @@ export default {
       this.dialogError = false;
       this.$router.push('/devices');
     },
+
     receiveName(params) {
       this.device.name = params;
     },
   },
 };
+
 </script>

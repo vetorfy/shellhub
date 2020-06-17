@@ -19,8 +19,8 @@
         </p>
         <p>
           The easiest way to install ShellHub agent is with our automatic
-          one-line installation script,
-          which works with all Linux distributions that have Docker installed and properly set up.
+          one-line installation script, which works with all Linux distributions
+          that have Docker installed and properly set up.
         </p>
 
         <strong>Run the following command on your device:</strong>
@@ -67,6 +67,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'DeviceAdd',
 
@@ -92,6 +93,7 @@ export default {
       },
     },
   },
+
   methods: {
     command() {
       return `curl "${window.location.protocol}//${this.hostname}/install.sh?tenant_id=${this.tenant}" | sh`;
@@ -103,9 +105,11 @@ export default {
     },
   },
 };
+
 </script>
 
 <style lang="scss" scoped>
+
 @import '~vuetify/src/styles/settings/_variables.scss';
 
 .code {
@@ -113,4 +117,5 @@ export default {
   font-size: $code-kbd-font-size;
   font-weight: $code-kbd-font-weight;
 }
+
 </style>
