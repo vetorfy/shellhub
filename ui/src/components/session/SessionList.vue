@@ -217,7 +217,7 @@ export default {
 
   methods: {
     detailsSession(session) {
-      this.$router.push(`'/session/'${session.uid}`);
+      this.$router.push(`/session/${session.uid}`);
     },
     async closeSession(session) {
       // eslint-disable-next-line no-restricted-globals
