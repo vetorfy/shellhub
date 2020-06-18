@@ -1,5 +1,5 @@
-import Vue from '../../node_modules/vue';
-import Router from '../../node_modules/vue-router';
+import Vue from 'vue';
+import Router from 'vue-router';
 import Dashboard from '../views/Dashboard';
 import store from '../store';
 

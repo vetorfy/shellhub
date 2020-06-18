@@ -120,7 +120,7 @@
 
 <script>
 
-import moment from '../../../node_modules/moment';
+import moment from 'moment';
 import TerminalDialog from '../terminal/TerminalDialog';
 import DeviceIcon from './DeviceIcon';
 import DeviceDelete from './DeviceDelete';

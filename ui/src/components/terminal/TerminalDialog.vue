@@ -79,11 +79,11 @@
 
 <script>
 
-import { Terminal } from '../../../node_modules/xterm';
-import { AttachAddon } from '../../../node_modules/xterm-addon-attach';
-import { FitAddon } from '../../../node_modules/xterm-addon-fit';
+import { Terminal } from 'xterm';
+import { AttachAddon } from 'xterm-addon-attach';
+import { FitAddon } from 'xterm-addon-fit';
 
-import '../../../node_modules/xterm/css/xterm.css';
+import 'xterm/css/xterm.css';
 
 export default {
   name: 'TerminalDialog',

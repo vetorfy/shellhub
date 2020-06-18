@@ -18,6 +18,7 @@ module.exports = {
     'airbnb-base',
     'plugin:vue/recommended',
   ],
+  plugins: [ 'import' ],
   rules: {
     'semi': ['error', 'always'],
     'quotes': ['error', 'single', {'avoidEscape': true, 'allowTemplateLiterals': true}],
@@ -47,7 +48,7 @@ module.exports = {
       node: {
         paths: ['src'],
         extensions: ['.js', '.vue'],
-        moduleDirectory: ['src/'],
+        moduleDirectory: ['node_modules','src/'],
       },
     },
   },

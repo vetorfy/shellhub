@@ -1,4 +1,4 @@
-import Vue from '../../node_modules/vue';
+import Vue from 'vue';
 
 export default {
   namespaced: true,

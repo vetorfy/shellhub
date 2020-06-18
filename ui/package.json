@@ -15,6 +15,7 @@
     "core-js": "^3.6.5",
     "eslint-plugin-import": "^2.21.2",
     "is-valid-hostname": "0.0.1",
+    "moment": "^2.26.0",
     "v-clipboard": "^2.2.3",
     "vue": "^2.6.11",
     "vue-fragment": "^1.5.1",

@@ -4,7 +4,7 @@
 
 <script>
 
-import { Terminal } from '../../../node_modules/xterm';
+import { Terminal } from 'xterm';
 
 export default {
   name: 'Terminal',

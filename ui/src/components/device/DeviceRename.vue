@@ -64,7 +64,7 @@
 
 <script>
 
-import isValidHostname from '../../../node_modules/is-valid-hostname';
+import isValidHostname from 'is-valid-hostname';
 
 export default {
   name: 'DeviceRename',

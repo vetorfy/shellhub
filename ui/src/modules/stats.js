@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
 import getStats from '../api/stats';
 
