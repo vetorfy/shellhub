@@ -32,10 +32,11 @@ module.exports = {
     'no-empty-pattern': ['error'],
     'no-redeclare': ['error'],
     'no-delete-var': ['error'],
-    'camelcase': ['error'],
+    camelcase: ['error'],
     'brace-style': ['error'],
     'arrow-parens': ['error', 'always'],
     'no-var': ['error'],
+    'import/no-cycle': [0, { ignoreExternal: true }],
     'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
       jsx: 'never',
