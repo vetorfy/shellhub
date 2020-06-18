@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 import '@mdi/font/css/materialdesignicons.css';

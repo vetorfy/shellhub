@@ -10,7 +10,7 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
     // specifying a module sourcetype prevent eslint from marking import statements as errors
-    sourceType: 'module'
+    sourceType: 'module',
   },
   extends: [
     // use the recommended rule set for both plain javascript and vue
@@ -18,7 +18,7 @@ module.exports = {
     'airbnb-base',
     'plugin:vue/recommended',
   ],
-  plugins: [ 'import' ],
+  plugins: ['import'],
   rules: {
     'semi': ['error', 'always'],
     'quotes': ['error', 'single', {'avoidEscape': true, 'allowTemplateLiterals': true}],
@@ -36,20 +36,18 @@ module.exports = {
     'brace-style': ['error'],
     'arrow-parens': ['error', 'always'],
     'no-var': ['error'],
-    'import/no-cycle': [0, { ignoreExternal: true }],
+    'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],
+    'import/no-cycle': [0, {'ignoreExternal': true}],
     'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
-      jsx: 'never',
       vue: 'never',
     }],
-    // "no-param-reassign": 0
   },
-  settings:{
+  settings: {
     'import/resolver': {
       node: {
-        paths: ['src'],
         extensions: ['.js', '.vue'],
-        moduleDirectory: ['node_modules','src/'],
+        moduleDirectory: ['node_modules', 'src/'],
       },
     },
   },
