@@ -235,7 +235,6 @@ export default {
         uid: item.uid,
         name: this.editName,
       });
-      // item.name = this.editName;
     },
   },
 };

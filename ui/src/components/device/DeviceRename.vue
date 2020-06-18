@@ -53,6 +53,7 @@
             color="primary"
             text
             @click="check"
+            @click:outside="cancel"
           >
             Rename
           </v-btn>
@@ -82,13 +83,6 @@ export default {
       editName: '',
       invalid: false,
     };
-  },
-
-  watch: {
-    dialog(out) {
-      // eslint-disable-next-line no-unused-expressions
-      !out && this.cancel();
-    },
   },
 
   methods: {
