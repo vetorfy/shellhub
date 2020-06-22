@@ -186,9 +186,11 @@ export default {
     try {
       await this.$store.dispatch('sessions/get', this.uid);
       this.session = this.$store.getters['sessions/get'];
-    } catch (error) {
-      this.hide = false;
-      this.dialog = true;
+      await this.$store.dispatch('sessions/getLogSession', this.uid);
+      console.log(this.$store.getters['sessions/getLogSession']);
+    } catch(error){
+      this.hide=false;
+      this.dialog=true;
     }
   },
 
