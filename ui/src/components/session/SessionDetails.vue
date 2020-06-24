@@ -39,6 +39,8 @@
 
         <v-spacer />
 
+        <SessionPlay />
+
         <v-icon
           v-if="session.active"
           class="icons ml-1"
@@ -160,10 +162,15 @@
 
 <script>
 
+import SessionPlay from '@/components/session/SessionPlay';
 import moment from 'moment';
 
 export default {
   name: 'SessionDetails',
+
+  components: {
+    SessionPlay,
+  },
 
   data() {
     return {
@@ -172,6 +179,7 @@ export default {
       closeSessionSnack: false,
       dialog: false,
       hide: true,
+      logs: [],
     };
   },
 
@@ -187,10 +195,12 @@ export default {
       await this.$store.dispatch('sessions/get', this.uid);
       this.session = this.$store.getters['sessions/get'];
       await this.$store.dispatch('sessions/getLogSession', this.uid);
-      console.log(this.$store.getters['sessions/getLogSession']);
-    } catch(error){
-      this.hide=false;
-      this.dialog=true;
+      this.logs = this.$store.getters['sessions/getLogSession'];
+      // eslint-disable-next-line no-console
+      console.log(this.logs);
+    } catch (error) {
+      this.hide = false;
+      this.dialog = true;
     }
   },
 
