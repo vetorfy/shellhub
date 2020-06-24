@@ -15,6 +15,12 @@ const router = new Router({
       component: Dashboard
     },
     {
+      path: '/test',
+      name: 'test',
+      component: () =>
+        import ('./../views/Test.vue')
+    },
+    {
       path: '/devices',
       name: 'devices',
 
