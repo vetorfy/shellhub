@@ -501,11 +501,11 @@ func main() {
 		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
 		svc := sessionmngr.NewService(store)
 
-		record, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
+		record, count, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
 		if err != nil {
 			return err
 		}
-		fmt.Println(record)
+		_ = count
 		return c.JSON(http.StatusOK, record)
 	})
 
