@@ -574,7 +574,7 @@ func (s *Store) GetDeviceByUID(ctx context.Context, uid models.UID, tenant strin
 	return device, nil
 }
 
-func (s *Store) GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, error) {
+func (s *Store) GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, int, error) {
 	sessionRecord := make([]models.RecordedSession, 0)
 
 	query := []bson.M{
@@ -593,7 +593,7 @@ func (s *Store) GetRecord(ctx context.Context, uid models.UID) ([]models.Recorde
 	}
 	cursor, err := s.db.Collection("recorded_sessions").Aggregate(ctx, query)
 	if err != nil {
-		return sessionRecord, err
+		return sessionRecord, 0, err
 	}
 
 	defer cursor.Close(ctx)
@@ -602,12 +602,29 @@ func (s *Store) GetRecord(ctx context.Context, uid models.UID) ([]models.Recorde
 		record := new(models.RecordedSession)
 		err = cursor.Decode(&record)
 		if err != nil {
-			return sessionRecord, err
+			return sessionRecord, 0, err
 		}
 
 		sessionRecord = append(sessionRecord, *record)
 	}
-	return sessionRecord, nil
+
+	if tenant := store.TenantFromContext(ctx); tenant != nil {
+		query = append(query, bson.M{
+			"$match": bson.M{
+				"tenant_id": tenant.ID,
+			},
+		})
+	}
+
+	query = append(query, bson.M{
+		"$count": "count",
+	})
+
+	count, err := aggregateCount(ctx, s.db.Collection("recorded_sessions"), query)
+	if err != nil {
+		return nil, 0, err
+	}
+	return sessionRecord, count, nil
 }
 
 func buildFilterQuery(filters []models.Filter) ([]bson.M, error) {

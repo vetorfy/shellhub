@@ -26,5 +26,5 @@ type Store interface {
 	GetDeviceByMac(ctx context.Context, mac, tenant string) (*models.Device, error)
 	GetDeviceByName(ctx context.Context, name, tenant string) (*models.Device, error)
 	GetDeviceByUID(ctx context.Context, uid models.UID, tenant string) (*models.Device, error)
-	GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, error)
+	GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, int, error)
 }
