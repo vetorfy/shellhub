@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/rsa"
 	"fmt"
+	"github.com/gorilla/websocket"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -27,6 +28,12 @@ import (
 type config struct {
 	MongoHost string `envconfig:"mongo_host" default:"mongo"`
 	MongoPort int    `envconfig:"mongo_port" default:"27017"`
+}
+
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+	CheckOrigin:     func(r *http.Request) bool { return true },
 }
 
 var verifyKey *rsa.PublicKey
@@ -422,6 +429,28 @@ func main() {
 			return err
 		}
 		_ = count
+
+		ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
+		if err != nil {
+			return err
+		}
+		defer ws.Close()
+
+		for {
+			// Write
+			err := ws.WriteMessage(websocket.TextMessage, []byte("Hello, Client!"))
+			if err != nil {
+				c.Logger().Error(err)
+			}
+
+			// Read
+			_, msg, err := ws.ReadMessage()
+			if err != nil {
+				c.Logger().Error(err)
+			}
+			fmt.Printf("%s\n", msg)
+		}
+
 		return c.JSON(http.StatusOK, record)
 	})
 
