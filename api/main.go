@@ -521,7 +521,7 @@ func main() {
 		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
 		svc := sessionmngr.NewService(store)
 
-		record, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
+		record, _, err := svc.GetRecord(ctx, models.UID(c.Param("uid")))
 		if err != nil {
 			return err
 		}
