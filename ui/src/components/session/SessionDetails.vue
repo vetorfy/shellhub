@@ -39,7 +39,7 @@
 
         <v-spacer />
 
-        <SessionPlay />
+        <SessionPlay :logs="logs" />
 
         <v-icon
           v-if="session.active"

@@ -51,6 +51,13 @@ import 'xterm/css/xterm.css';
 export default {
   name: 'SessionPlay',
 
+  props: {
+    logs: {
+      type: Array,
+      required: true,
+    },
+  },
+
   data() {
     return {
       dialog: false,
@@ -68,6 +75,8 @@ export default {
 
   methods: {
     openPlay() {
+      // eslint-disable-next-line no-console
+      console.log(this.logs);
       this.dialog = !this.dialog;
       this.xterm = new Terminal({ // instantiate
         cursorBlink: true,
@@ -95,10 +104,9 @@ export default {
     },
 
     print() {
-      this.xterm.write('test');
-      this.xterm.on('data', (data) => {
-        this.xterm.write(data);
-      });
+      for (let i = 0; i < this.logs.length; i += 1) {
+        this.xterm.write(`${this.logs[i].message}\r\n`);
+      }
     },
   },
 };
