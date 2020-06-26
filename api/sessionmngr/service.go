@@ -2,7 +2,7 @@ package sessionmngr
 
 import (
 	"context"
-	"strings"
+	//	"strings"
 
 	"github.com/shellhub-io/shellhub/api/store"
 	"github.com/shellhub-io/shellhub/pkg/api/paginator"
@@ -47,13 +47,14 @@ func (s *service) SetSessionAuthenticated(ctx context.Context, uid models.UID, a
 	return s.store.SetSessionAuthenticated(ctx, uid, authenticated)
 }
 func (s *service) RecordSession(ctx context.Context, uid models.UID, recordString string) error {
-	result := strings.Split(strings.Replace(recordString, "\r\n", "\n", -1), "\n")
-	for i := range result {
-		if err := s.store.RecordSession(ctx, uid, result[i]); err != nil {
-			return err
-		}
-
+	//result := strings.Split(strings.Replace(recordString, "\r\n", "\n", -1), "\n")
+	//for i := range result {
+	//if err := s.store.RecordSession(ctx, uid, result[i]); err != nil {
+	if err := s.store.RecordSession(ctx, uid, recordString); err != nil {
+		return err
 	}
+
+	//}
 	return nil
 }
 func (s *service) GetRecord(ctx context.Context, uid models.UID) ([]models.RecordedSession, int, error) {
