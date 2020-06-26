@@ -24,6 +24,18 @@
           <v-spacer />
         </v-toolbar>
         <div ref="playterminal" />
+        <v-card>
+          <v-card-actions>
+            <v-btn
+              :disabled="disable"
+              color="primary"
+              class="mt-4"
+              @click="connect()"
+            >
+              Play
+            </v-btn>
+          </v-card-actions>
+        </v-card>
       </v-card>
     </v-dialog>
   </fragment>
@@ -41,19 +53,14 @@ export default {
 
   data() {
     return {
-      username: '',
-      passwd: '',
-      valid: true,
       dialog: false,
-      rules: {
-        required: (value) => !!value || 'Required',
-      },
+      disable: false,
     };
   },
 
   watch: {
     dialog(value) {
-      if (!value) { //
+      if (!value) {
         this.close();
       }
     },
@@ -68,22 +75,23 @@ export default {
       });
       this.fitAddon = new FitAddon(); // load fit
       this.xterm.loadAddon(this.fitAddon); // adjust screen in container
-      this.xterm.open(this.$refs.playterminal);
-      if (this.xterm.element) { // check already existence
-        this.xterm.reset();
-      }
-      this.connect();
     },
 
     connect() {
+      this.disable = true;
+      this.xterm.open(this.$refs.playterminal);
       this.$nextTick(() => this.fitAddon.fit());
       this.fitAddon.fit();
       this.xterm.focus();
       this.print();
+      if (this.xterm.element) { // check already existence
+        this.xterm.reset();
+      }
     },
 
     close() {
       if (this.xterm) this.xterm.dispose();
+      this.disable = false;
     },
 
     print() {
