@@ -92,7 +92,7 @@ export default {
       this.$nextTick(() => this.fitAddon.fit());
       this.fitAddon.fit();
       this.xterm.focus();
-      this.print();
+      this.print(0, this.logs[0]);
       if (this.xterm.element) { // check already existence
         this.xterm.reset();
       }
@@ -103,8 +103,19 @@ export default {
       this.disable = false;
     },
 
-    print() {
-      for (let i = 0; i < this.logs.length; i += 1) {
+    print(i, obj) {
+      this.check_hostname(i);
+      if (i === this.logs.length - 1) return;
+      const nextObj = this.logs[i + 1];
+      const now = new Date(obj.time);
+      const future = new Date(nextObj.time);
+      setTimeout(this.print.bind(null, i + 1, nextObj), future.getTime() - now.getTime());
+    },
+
+    check_hostname(i) {
+      if (this.logs[i].message.includes('@')) { // hostname verify,
+        this.xterm.write(`${this.logs[i].message}`);
+      } else {
         this.xterm.write(`${this.logs[i].message}\r\n`);
       }
     },
