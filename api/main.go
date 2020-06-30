@@ -135,12 +135,12 @@ func main() {
 		return c.JSON(http.StatusOK, res)
 	})
 
-	publicAPI.PATCH("/devices/:uid/allow", func(c echo.Context) error {
+	publicAPI.PATCH("/devices/:uid/:status", func(c echo.Context) error {
 		ctx := c.Get("ctx").(context.Context)
 		store := mongo.NewStore(ctx.Value("db").(*mgo.Database))
 		svc := deviceadm.NewService(store)
 
-		err := svc.UpdatePendingStatus(ctx, models.UID(c.Param("uid")), false)
+		err := svc.UpdatePendingStatus(ctx, models.UID(c.Param("uid")), c.Param("status"))
 		if err != nil {
 			return err
 		}
@@ -153,8 +153,8 @@ func main() {
 		svc := deviceadm.NewService(store)
 
 		var query struct {
-			Filter  string `query:"filter"`
-			Pending bool   `query:"pending"`
+			Filter string `query:"filter"`
+			Status string `query:"status"`
 			paginator.Query
 		}
 		c.Bind(&query)
@@ -162,7 +162,7 @@ func main() {
 		// TODO: normalize is not required when request is privileged
 		query.Normalize()
 
-		devices, count, err := svc.ListDevices(ctx, query.Query, query.Filter, query.Pending)
+		devices, count, err := svc.ListDevices(ctx, query.Query, query.Filter, query.Status)
 		if err != nil {
 			return err
 		}
